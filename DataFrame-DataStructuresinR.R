@@ -19,11 +19,10 @@ str(df)
 # Note: By default, data frame returns string variables as a factor.
 
 #Slice Data Frame: 
-#We select the rows and columns to return into bracket precede by the name of the data frame.
+#We select rows and columns to return into bracket preceded by the name of the data frame
 
 ## Select row 1 in column 2
 df[1,2]
-
 
 ## Select Rows 1 to 2
 df[1:2,]
@@ -58,4 +57,46 @@ df$ID
 #Subsetting a Data Frame based on some condition.(we will use subset() fxn for this)
 # Select price above 5
 subset(df, subset = price > 5)
+
+# Another example of dataframe:
+
+#create Vectors to be combined into DF
+(rollno = 1:30)
+(sname = paste('student',1:30,sep=''))
+(gender = sample(c('M','F'), size=30, replace=T, prob=c(.7,.3)))
+(marks = floor(rnorm(30, mean=50,sd=10)))
+plot(density(marks)); 
+abline(v=50)
+(marks2 = ceiling(rnorm(30,40,5)))
+plot(density(marks2)); 
+abline(v=c(40,50))
+(course = sample(c('BBA','MBA'), size=30, replace=T, prob=c(.5,.5)))
+
+#create DF
+df1= data.frame(rollno, sname, gender, marks, marks2, course)
+str(df1) #structure of DF
+head(df1) #top 6 rows
+head(df1,n=3) #top 3 rows
+tail(df1) #last 6 rows
+class(df1) # DF
+summary(df1) #summary
+
+df1  #full data
+df1[,c('course')]
+df1$course
+df1$gender  # one column
+df1[ , c(2,4)] #multiple columns
+df1[1:10 ,] #select rows, all columns
+#as per conditionis
+names(df1)
+df1[ marks > 50 & gender=='F', c('rollno', 'sname','marks')]
+df1[ marks < 50 & gender=='F', c(1,2,3,4)]
+df1[ marks > 50 & gender=='F', ]
+
+names(df1)  # names of columns
+dim(df1)  #Dimensions
+
+aggregate(df1$marks, by=list(df1$gender), FUN=min)
+
+(df2 = aggregate(cbind(marks,marks2) ~ gender + course, data=df1, FUN=max))
 

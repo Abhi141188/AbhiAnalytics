@@ -4,9 +4,12 @@
 # Create gender vector
 gender_vector <- c("Male", "Female", "Female", "Male", "Male")
 class(gender_vector)
+table(gender_vector)
+
 # Convert gender_vector to a factor
 factor_gender_vector <-factor(gender_vector)
 class(factor_gender_vector)
+table(gender_vector)
 
 # A categorical variable can be divided into 2 types:
 # nominal categorical variable and ordinal categorical variable.
@@ -30,4 +33,5 @@ factor_day <- factor(day_vector, order = TRUE, levels =c('morning', 'midday', 'a
 factor_day
 
 #Note: Continuous Variables are by default of numeric class in R.
+
 
