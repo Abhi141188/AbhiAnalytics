@@ -73,4 +73,16 @@ x
 quantile(x)
 x[274:280]
 
+# R Environment functions:
+# ls()- returns all the variables present in the rscript.
+# rm()- removes all the variables present in the rscript.
+# install.packages()- used to install a package in our collection of packages in R
+# whose functions we wish to use. Done only once.
+# library()- Used when we wish to call the functions of an already installed package.
+# help()- Gives details of the dataset
 
+ls()
+rm(list = ls())
+# install.packages("dplyr")
+library(dplyr)
+help("dplyr")
