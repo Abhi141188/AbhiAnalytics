@@ -1,5 +1,14 @@
 #Operators in R: sort, rank, order.
 
+# Creating data set by combining 4 variables of same length.
+# Create a, b, c, d variables
+a <- c(10,20,30,40)
+b <- c('book', 'pen', 'textbook', 'pencil_case')
+c <- c(TRUE,FALSE,TRUE,FALSE)
+d <- c(2.5, 8, 10, 7)
+# Join the variables to create a data frame
+df <- data.frame(a,b,c,d)
+df
 #Sort()
 #You can sort your data according to certain variable in dataset using order() fxn.
 # Sort by column 'd' in dataset df in ascending order.
@@ -27,4 +36,4 @@ x=c(1,2,36,3)
 rank(x)
 rank(mtcars$mpg, ties.method = 'min')
 rorder =cbind(mtcars$mpg, rank(mtcars$mpg, ties.method = 'min'))
-
+rorder

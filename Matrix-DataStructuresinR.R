@@ -80,7 +80,7 @@ m2[,2:3] # 2nd to 3rd coln
 m2[c(1,2),c(2,3)]
 m2[,]
 m2[-2,] # exclude 2nd row
-m2[1:5] # matrix is like vector
+m2[1:8] # matrix is like vector
 m2[m2 > 5]
 
 #modify Vector
@@ -98,15 +98,8 @@ rowSums(m1)
 colMeans(m1); 
 rowMeans(m1)
 
-t(m1) # transpose
+# transpose
+t(m1) 
 m1
-sweep(m1, MARGIN = 1, STATS = c(2,3,4,5), FUN="+" ) #rowise
-sweep(m1, MARGIN = 2, STATS = c(2,3,4), FUN="*" ) #colwise
 
-#addmargins
-m1
-addmargins(m1,1,sum) #colwise function
-addmargins(m1,2,mean) #rowwise function
-addmargins(m1,c(1,2),mean) #row & col wise function
-addmargins(m1,c(1,2),list(list(mean,sum), list(var,sd))) #row & col wise function
 

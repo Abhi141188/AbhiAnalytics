@@ -2,7 +2,7 @@
 # Execution time of Apply() fxn is faster then  For Loop.
 # Example:
 # Getting the row means, of every row, of two columns in the following 10000 row dataframe:
-  N <- 10000
+  N <- 10
   x1 <- runif(N)
   x2 <- runif(N)
   d <- as.data.frame(cbind(x1, x2))
@@ -17,7 +17,7 @@
   
 # Apply:
   rowMeanApply <- apply(d, 1, mean)
-  
+
 # Checking whether the two results, one from loop & another from apply() are equal.
   all.equal(rowMeanFor, rowMeanApply)
   
@@ -30,6 +30,12 @@
 # "User CPU time" gives the CPU time spent by the current process (i.e., the current R session) and 
 #"system CPU time" gives the CPU time spent by the kernel (the operating system) on behalf of the current process.
 # The output lists durations in seconds.
+  
+  N <- 1000
+  x1 <- runif(N)
+  x2 <- runif(N)
+  d <- as.data.frame(cbind(x1, x2))
+  head(d)
   
 # Time to do this using the For loop:
   system.time(
@@ -79,3 +85,4 @@ system.time( rowMeanApply <- apply(d, 1, mean))
 # Note: 
 # sapply() returns output in vector/matrix whereas 
 # lapply() retuns output in list.
+  

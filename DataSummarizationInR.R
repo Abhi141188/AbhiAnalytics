@@ -5,7 +5,7 @@
 # aggregate()- Splits the data into subsets, computes summary statistics for each.
 # 
 mtcars
-
+View(mtcars)
 #table-------
 table(mtcars$cyl)
 table(mtcars$gear)
@@ -74,19 +74,33 @@ addmargins(A=t1, margin=c(1,2), FUN=list(list(sum,mean, length, mean), list(sd, 
 #proportion of values 
 t1
 prop.table(t1)
-#Cyl4, Gear3 : 1 out of 32 = 3.12%
-1/32
+#Cyl4, Gear3 : 1 out of 32 = 1/32
+
 prop.table(t1, margin=1)  #sum of each row=1
 t1
 #Cyl4, Gear 3 : 1 out of 11 Cyl4 cars : 1/11
-1/11
+
 prop.table(t1, margin=2)  #sum of each col=1
 #Cyl4, Gear 3 : 1 out of 15 Gear3 cars : 1/15
-1/15
+
 matrix(paste(prop.table(x=t1)*100 , '%', sep=''), ncol=3)
 #quick check
 rowSums(prop.table(t1, margin=1))  #correct
 #rowSums(prop.table(t1, margin=2))
 colSums(prop.table(t1, margin=2))
 
-#end -------------
+#transpose----
+t(m1) 
+m1
+
+#sweep----
+sweep(m1, MARGIN = 1, STATS = c(2,3,4,5,6), FUN="+" ) #rowise
+sweep(m1, MARGIN = 2, STATS = c(2,3,4,5,6,7), FUN="*" ) #colwise
+
+#addmargins----
+m1
+addmargins(m1,1,sum) #colwise function
+addmargins(m1,2,mean) #rowwise function
+addmargins(m1,c(1,2),mean) #row & col wise function
+addmargins(m1,c(1,2),list(list(mean,sum), list(var,sd))) #row & col wise function
+

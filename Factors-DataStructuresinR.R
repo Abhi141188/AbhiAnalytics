@@ -23,7 +23,9 @@ factor_color <- factor(color_vector)
 factor_color
 
 #Ordinal categorical variables do have a natural ordering. 
-#We can specify the order, from the lowest to the highest with order = TRUE and highest to lowest with order = FALSE.
+#We can specify the order here, 
+# from the lowest to the highest with order = TRUE and 
+# from highest to lowest with order = FALSE.
 
 # Create Ordinal categorical vector 
 day_vector <- c('evening', 'morning', 'afternoon', 'midday', 'midnight', 'evening')
