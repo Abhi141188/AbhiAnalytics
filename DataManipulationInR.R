@@ -9,6 +9,16 @@
 # select()
 #install.packages("dplyr")
 library(dplyr)
+# Creating data set by combining 4 variables of same length.
+# Create a, b, c, d variables
+a <- c(10,20,30,40)
+b <- c('book', 'pen', 'textbook', 'pencil_case')
+c <- c(TRUE,FALSE,TRUE,FALSE)
+d <- c(2.5, 8, 10, 7)
+# Join the variables to create a data frame
+df <- data.frame(a,b,c,d)
+df
+
 step_1_df <- select(df, a,b,c)
 dim(df)
 dim(step_1_df)
@@ -17,9 +27,11 @@ step_1_df
 # filter()
 # Select observations
 select_f1 <- filter(df, b == "book")
+select_f1
 dim(select_f1)
 
 select_f2 <- filter(df, c == "TRUE")
+select_f2
 dim(select_f2)
 
 #use filter to filter data with required condition
@@ -32,16 +44,15 @@ select(mynewdata, cyl,mpg,hp)
 
 #here you can use (-) to hide columns
 select(mynewdata, -cyl, -mpg ) 
-
-#hide a range of columns
-select(mynewdata, -c(cyl,mpg))
+# or use the coomand below
+select(mynewdata, -c(cyl,hp))
 
 #select series of columns
 select(mynewdata, cyl:gear)
 
 #chaining or pipelining - a way to perform multiple operations
 #in one line
-mynewdata %>% select(cyl, wt, gear)%>% filter(wt > 2)
+mynewdata %>% select(cyl, wt, gear)%>% filter(wt > 3)
 
 #arrange can be used to reorder rows
 mynewdata%>% select(cyl, wt, gear)%>% arrange(wt)
@@ -52,21 +63,25 @@ mynewdata%>% select(cyl, wt, gear)%>% arrange(desc(wt))
 mynewdata %>% select(mpg, cyl)%>% mutate(newvariable = mpg*cyl)
 
 # summarise()- this is used to find insights from data
+?iris
 myirisdata <- iris
+View(myirisdata)
 
 myirisdata%>% group_by(Species)%>%
   summarise(Average = mean(Sepal.Length, na.rm = TRUE))
 
 #or use summarise each
-myirisdata%>% group_by(Species)%>% 
-  summarise_each(funs(mean, n()), Sepal.Length, Sepal.Width)
+View(myirisdata%>% group_by(Species)%>% 
+  summarise_each(funs(mean, median), Sepal.Length, Sepal.Width))
 
 #you can rename the variables using rename command
 mynewdata %>% rename(miles = mpg)
 
 #----Merging various datasets using joins----
 # Creating two data frame tables: df_primary & df_secondary
+
 library(dplyr)
+
 df_primary <- tribble(
   ~ID, ~y,
   "A", 5,
@@ -81,6 +96,10 @@ df_secondary <- tribble(
   "C", 22,
   "D", 25,
   "E", 29)
+
+View(df_primary)
+
+View(df_secondary)
 
 # left join()
 left_join(df_primary, df_secondary, by ='ID')

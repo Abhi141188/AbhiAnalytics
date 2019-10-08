@@ -56,7 +56,7 @@ print(list)
 # To iterate over matrix, we define two for loop:
 # one for the rows and another for the column.
 # Create a matrix
-mat <- matrix(data = seq(1, 18, by=1), nrow = 6, ncol =2)
+mat <- matrix(data = seq(1, 18, by=1), nrow = 6, ncol =3)
 # Create the loop with r and c to iterate over the matrix
 for (r in 1:nrow(mat))   
   for (c in 1:ncol(mat))  

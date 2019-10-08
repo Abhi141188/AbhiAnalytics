@@ -98,6 +98,7 @@ sweep(m1, MARGIN = 1, STATS = c(2,3,4,5,6), FUN="+" ) #rowise
 sweep(m1, MARGIN = 2, STATS = c(2,3,4,5,6,7), FUN="*" ) #colwise
 
 #addmargins----
+m1 <- matrix(1:10, nrow=3)
 m1
 addmargins(m1,1,sum) #colwise function
 addmargins(m1,2,mean) #rowwise function
