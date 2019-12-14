@@ -1,4 +1,5 @@
 #Clustering Basics:
+
 #Clustering----
 #Example:
 #We have data on the total spend of customers and their ages. 
