@@ -1,7 +1,7 @@
 #Clustering Basics:
-
 #Clustering----
-#Example:We have data on the total spend of customers and their ages. 
+#Example:
+#We have data on the total spend of customers and their ages. 
 #To improve advertising, marketing team wants to send more targeted emails to their customers.
 
 #Plot the total spend and the age of the customers.
