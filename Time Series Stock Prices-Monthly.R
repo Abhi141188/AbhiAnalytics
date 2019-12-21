@@ -75,5 +75,21 @@ Box.test(fitlnstock$resid, lag = 10,type = "Ljung-Box")
 #Now, since the p value is in-significant, hence, we cant reject the Null hypothesis 
 #that the residuals are random.
 
+-------------------------------------
+#Fetching Company's financial data from online source & analyzing it using quantmode package----
+install.packages("quantmod")
+library(quantmod)
+start <- as.Date("2019-10-01") ;end <- as.Date("2019-12-20")
+getSymbols("SBIN.NS", src = "yahoo", from = start, to = end)
+SBIN.NS
+head(SBIN.NS)
+plot(SBIN.NS[, "SBIN.NS.Close"], main = "SBIN.NS")
+candleChart(SBIN.NS, up.col = "black", dn.col = "red", theme = "white")
+#multiple stocks - prices from 
+getSymbols(c("ICICIBANK.NS", "TATAMOTORS.NS"), src = "yahoo", from = start, to = end)
 
+stocks = as.xts(data.frame(SBIN = SBIN.NS[, "SBIN.NS.Close"], ICICI = ICICIBANK.NS[, "ICICIBANK.NS.Close"], TATAMOTORS = TATAMOTORS.NS[, "TATAMOTORS.NS.Close"]))
+head(stocks)
+plot(as.zoo(stocks), screens = 1, lty = 1:3, xlab = "Date", ylab = "Price")
+legend("right", c("SBIN", "ICICI", "TATATMOTORS"), lty = 1:3, cex = 0.5)
 
